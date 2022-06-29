@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "906035337062",
+    "project_id": "vlai-67a34",
+    "storage_bucket": "vlai-67a34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906035337062:android:fd43fb9b5d7bf3f5bf5aa7",
+        "android_client_info": {
+          "package_name": "com.levnext.vla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906035337062-berb1fibaf2s3gsugkf3neu7se2o52la.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.levnext.vla",
+            "certificate_hash": "590ba6f229787e533a2d10d3f1311a721ba063bc"
+          }
+        },
+        {
+          "client_id": "906035337062-s6a12q5s0a37i4vlf8b8l4meeolpkvfr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.levnext.vla",
+            "certificate_hash": "04433f2a931291be15dcf2af54860d5b6438f669"
+          }
+        },
+        {
+          "client_id": "906035337062-ahfc55jilucjuainm3bb1ofocgv3itth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdWHOqWpvLB5lF6KKySyqgIUyqDfELOio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906035337062-ahfc55jilucjuainm3bb1ofocgv3itth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
