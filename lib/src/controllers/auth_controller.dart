@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../helpers/app_snackbar.dart';
@@ -80,9 +81,11 @@ RxBool visible = true.obs;
 
   // To send otp and navigate to otp screen
   Future sendOtp({required BuildContext context}) async {
+    GetStorage().write('userPhone', phoneController.text);
+    debugPrint("phone:" + GetStorage().read('userPhone'));
     ///saving country code incase to read when resend code on verify otp screen
     if (signupFormKey.currentState!.validate()) {
-      context.loaderOverlay.show();
+      //context.loaderOverlay.show();
       await FirebaseAuth.instance
           .verifyPhoneNumber(
         phoneNumber: '"91"${phoneController.text}', // With selected country code fro dropdown menu
@@ -91,12 +94,12 @@ RxBool visible = true.obs;
           debugPrint("*****verificationCompleted fn triggered *******");
         },
         verificationFailed: (FirebaseAuthException e) {
-          context.loaderOverlay.hide();
+          //context.loaderOverlay.hide();
            AppSnackbar.showSnackbar("INFO",'OTP verification failed', AlertType.info);
           debugPrint("*****verificationfailed fn triggered *******");
         },
         codeSent: (String verificationId, int? resendToken) {
-          context.loaderOverlay.hide();
+          //context.loaderOverlay.hide();
 
           ///saving country code incase to read when resend code on verify otp screen
           // VerifyOtpScreenController.receivedVerificationId = verificationId;
@@ -110,7 +113,7 @@ RxBool visible = true.obs;
         },
       )
           .onError((error, stackTrace) {
-        context.loaderOverlay.hide();
+        //context.loaderOverlay.hide();
         AppSnackbar.showSnackbar("ERROR",error.toString(),AlertType.error);
       });
     }

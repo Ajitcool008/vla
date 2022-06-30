@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vla/src/controllers/auth_controller.dart';
+import 'package:vla/src/views/verify_otp_screen.dart';
 
 import '../components/custom_button.dart';
 import '../components/text_field_with_border.dart';
@@ -103,7 +104,7 @@ const  SigninSignupScreen({Key? key}) : super(key: key);
           SizedBox(height: screenSize.width * .08),
           TextFieldWithBorder(
             hint: "Enter phone number",
-            icon: const SizedBox.shrink(),
+            //icon: const SizedBox.shrink(),
             controller: con.phoneController,
             validator: con.phoneValidator,
             keyboardType: TextInputType.phone,
@@ -112,7 +113,8 @@ const  SigninSignupScreen({Key? key}) : super(key: key);
           SizedBox(height: screenSize.width * .1),
           CustomButton(
             name: "SendOTP",
-            fnToBeExecute: ()=>con.sendOtp(context: context),
+            fnToBeExecute: ()=> Get.to(()=> VerifyOtpScreen())
+                //con.sendOtp(context: context),
           ),
           SizedBox(height: screenSize.width * .0851),
           SizedBox(height: screenSize.height * .045),

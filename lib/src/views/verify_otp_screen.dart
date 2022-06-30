@@ -2,10 +2,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:vla/src/views/home_screen.dart';
 
 import '../components/custom_button.dart';
 import '../components/otp_timerr.dart';
 import '../controllers/auth_controller.dart';
+import 'home_tabs_screen.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   static String routeName = '/verifyOtpScreen';
@@ -355,7 +357,9 @@ class VerifyOtpScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(horizontal: screenSize.width * .0122),
                               child: CustomButton(
                                 name: "Verify",
-                                fnToBeExecute: (){},
+                                fnToBeExecute: (){
+                                  Get.off(()=> HomeTabsScreen());
+                                },
                               ),
                             ),
                             const SizedBox.shrink(),

@@ -4,7 +4,7 @@ class TextFieldWithBorder extends StatelessWidget {
   const TextFieldWithBorder({
     Key? key,
     required this.hint,
-    required this.icon,
+    this.icon,
     required this.controller,
     this.validator,
     this.passwordToggler,
@@ -17,7 +17,7 @@ class TextFieldWithBorder extends StatelessWidget {
   }) : super(key: key);
 
   final String hint;
-  final Widget icon;
+  final Widget? icon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final void Function()? passwordToggler;
@@ -65,10 +65,10 @@ class TextFieldWithBorder extends StatelessWidget {
             letterSpacing: .2,
           ),
           border: InputBorder.none,
-          suffixIcon: IconButton(
-            onPressed: passwordToggler,
-            icon: icon,
-          ),
+          // suffixIcon: IconButton(
+          //   onPressed: passwordToggler,
+          //   icon: icon!,
+          // ),
         ),
       ),
     );
