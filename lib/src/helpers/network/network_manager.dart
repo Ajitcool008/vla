@@ -54,8 +54,10 @@ class NetworkManager {
     ));
     _dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
       if (AppManager.statusHelper.getLoginStatus) {
-        String postToken = GetStorage().read(Constants.token);
-       
+        String postToken = GetStorage().read(Constants.token) ?? "";
+        if (sendCS) {
+          options.headers["CSDATA"] = "Bearer $postToken";
+        }
         options.headers["Authorization"] = "Bearer $postToken";
       }
 
@@ -105,7 +107,7 @@ class NetworkManager {
           String postToken = GetStorage().read(Constants.token);
           //set bearer
           e.requestOptions.headers["Authorization"] = "Bearer $postToken";
-          
+
           //create request with new access token
           final opts = Options(method: e.requestOptions.method, headers: e.requestOptions.headers);
           final cloneReq = await _dio.request(e.requestOptions.path,
@@ -131,63 +133,63 @@ class NetworkManager {
   }
 }
 
-Future<dynamic> getApi(url, {Map<String, dynamic>? queryParameters}) async {
-  var response = await NetworkManager.instance.getDio().get(url, queryParameters: queryParameters).then((value) {
-    return value;
-  });
-  // .onError((dio.DioError error, stackTrace) async {
-  //   // if (error.error == "Http status error [403]") {
-  //   //   final getBox = GetStorage();
-  //   //   var _input = {
-  //   //     "operation": "RefreshToken",
-  //   //     "user": {"UserName": "${getBox.read(Constants.userNameSaved)}"}
-  //   //   };
-  //   //   var tokenResponse = await NetworkManager.instance.getDio().post(Endpoints.refreshToken, data: _input);
-  //   //   getBox.write(Constants.token, tokenResponse.data['token']);
-  //   //   await getApi(url, queryParameters: queryParameters);
-  //   // }
+// Future<dynamic> getApi(url, {Map<String, dynamic>? queryParameters}) async {
+//   var response = await NetworkManager.instance.getDio().get(url, queryParameters: queryParameters).then((value) {
+//     return value;
+//   });
+//   // .onError((dio.DioError error, stackTrace) async {
+//   //   // if (error.error == "Http status error [403]") {
+//   //   //   final getBox = GetStorage();
+//   //   //   var _input = {
+//   //   //     "operation": "RefreshToken",
+//   //   //     "user": {"UserName": "${getBox.read(Constants.userNameSaved)}"}
+//   //   //   };
+//   //   //   var tokenResponse = await NetworkManager.instance.getDio().post(Endpoints.refreshToken, data: _input);
+//   //   //   getBox.write(Constants.token, tokenResponse.data['token']);
+//   //   //   await getApi(url, queryParameters: queryParameters);
+//   //   // }
 
-  //   return error.error;
-  // });
-  return response;
-}
+//   //   return error.error;
+//   // });
+//   return response;
+// }
 
-Future<dynamic> postApi(url, {dynamic data}) async {
-  var response = await NetworkManager.instance.getDio().post(url, data: data).then((value) {
-    return value;
-  });
-  // .onError((dio.DioError error, stackTrace) async {
-  //   // if (error.error == "Http status error [403]") {
-  //   //   final getBox = GetStorage();
-  //   //   var _input = {
-  //   //     "operation": "RefreshToken",
-  //   //     "user": {"UserName": "${getBox.read(Constants.userNameSaved)}"}
-  //   //   };
-  //   //   var tokenResponse = await NetworkManager.instance.getDio().post(Endpoints.refreshToken, data: _input);
-  //   //   getBox.write(Constants.token, tokenResponse.data['token']);
-  //   //   await postApi(url, data: data);
-  //   // }
-  //   return error.error;
-  // });
-  return response;
-}
+// Future<dynamic> postApi(url, {dynamic data}) async {
+//   var response = await NetworkManager.instance.getDio().post(url, data: data).then((value) {
+//     return value;
+//   });
+//   // .onError((dio.DioError error, stackTrace) async {
+//   //   // if (error.error == "Http status error [403]") {
+//   //   //   final getBox = GetStorage();
+//   //   //   var _input = {
+//   //   //     "operation": "RefreshToken",
+//   //   //     "user": {"UserName": "${getBox.read(Constants.userNameSaved)}"}
+//   //   //   };
+//   //   //   var tokenResponse = await NetworkManager.instance.getDio().post(Endpoints.refreshToken, data: _input);
+//   //   //   getBox.write(Constants.token, tokenResponse.data['token']);
+//   //   //   await postApi(url, data: data);
+//   //   // }
+//   //   return error.error;
+//   // });
+//   return response;
+// }
 
-Future<dynamic> putApi(url, {dynamic data}) async {
-  var response = await NetworkManager.instance.getDio().put(url, data: data).then((value) {
-    return value;
-  });
-  // .onError((dio.DioError error, stackTrace) async {
-  //   // if (error.error == "Http status error [403]") {
-  //   //   final getBox = GetStorage();
-  //   //   var _input = {
-  //   //     "operation": "RefreshToken",
-  //   //     "user": {"UserName": "${getBox.read(Constants.userNameSaved)}"}
-  //   //   };
-  //   //   var tokenResponse = await NetworkManager.instance.getDio().post(Endpoints.refreshToken, data: _input);
-  //   //   getBox.write(Constants.token, tokenResponse.data['token']);
-  //   //   await putApi(url, data: data);
-  //   // }
-  //   return error.error;
-  // });
-  return response;
-}
+// Future<dynamic> putApi(url, {dynamic data}) async {
+//   var response = await NetworkManager.instance.getDio().put(url, data: data).then((value) {
+//     return value;
+//   });
+//   // .onError((dio.DioError error, stackTrace) async {
+//   //   // if (error.error == "Http status error [403]") {
+//   //   //   final getBox = GetStorage();
+//   //   //   var _input = {
+//   //   //     "operation": "RefreshToken",
+//   //   //     "user": {"UserName": "${getBox.read(Constants.userNameSaved)}"}
+//   //   //   };
+//   //   //   var tokenResponse = await NetworkManager.instance.getDio().post(Endpoints.refreshToken, data: _input);
+//   //   //   getBox.write(Constants.token, tokenResponse.data['token']);
+//   //   //   await putApi(url, data: data);
+//   //   // }
+//   //   return error.error;
+//   // });
+//   return response;
+// }

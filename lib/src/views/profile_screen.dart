@@ -40,25 +40,25 @@ class ProfileScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 70,
                   ),
-                  SizedBox(height: Get.height*0.08),
+                  SizedBox(height: Get.height * 0.08),
                   SettingItem(
-                    title: "MyProfiel",
+                    title: "My Profile",
                     leading: leading(screenSize: screenSize, img: 'my_profile@3x.png'),
                     //pageRoute: EditMyProfile.routeName,
                   ),
-                  SizedBox(height: Get.height*0.01),
+                  SizedBox(height: Get.height * 0.01),
                   SettingItem(
                     title: 'History',
                     leading: leading(screenSize: screenSize, img: 'history@3x.png'),
                     //pageRoute: HistoryScreen.routeName,
                   ),
-                  SizedBox(height: Get.height*0.01),
+                  SizedBox(height: Get.height * 0.01),
                   SettingItem(
                     title: "Cart",
                     leading: leading(screenSize: screenSize, img: 'lock@3x.png'),
                     //pageRoute: ChangePasswordScreen.routeName,
                   ),
-                  SizedBox(height: Get.height*0.01),
+                  SizedBox(height: Get.height * 0.01),
                   SettingItem(
                     title: "Logout",
                     trailing: const Icon(null),
@@ -75,11 +75,14 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget leading({required Size screenSize, required String img}) {
     return Container(
         height: 39,
         width: 39,
-        decoration: BoxDecoration(color: const Color(0xffDDDDDD).withOpacity(0.1), borderRadius: const BorderRadius.all(Radius.circular(10.0))),
+        decoration: BoxDecoration(
+            color: const Color(0xffDDDDDD).withOpacity(0.1),
+            borderRadius: const BorderRadius.all(Radius.circular(10.0))),
         child: Center(child: Image.asset('assets/images/$img')));
   }
 }

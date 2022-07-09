@@ -1,6 +1,15 @@
 class Endpoints {
   static const String baseURL = "https://vla.levnext.com/ims/api/";
   static const String login = "login.php";
+  static const String registers1 = "register-s1.php";
+  static const String registers2 = "/register-s2.php";
+  static const String registers3 = "/register-s3.php";
+  static const String market = "market.php";
+  static const String marketCheck = "market-check.php";
+  static const String pincodeCheck = "pincode-check.php";
+  static const String category = "category.php";
+  static const String products = "products_category.php";
+  static const String productPrice = "product_price_weight.php";
   static const String studentList = "student_list.php";
   static const String homework = "student_homework.php";
   static const String assignment = "student_assignment.php";

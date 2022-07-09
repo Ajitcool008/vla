@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
 class TextFieldWithBorder extends StatelessWidget {
-  const TextFieldWithBorder({
-    Key? key,
-    required this.hint,
-    this.icon,
-    required this.controller,
-    this.validator,
-    this.passwordToggler,
-    this.isTextObscure = false,
-    this.keyboardType = TextInputType.text,
-    this.maxLength,
-    this.enabled,
-    this.backgroundColor,
-    this.borderColor,
-  }) : super(key: key);
+  const TextFieldWithBorder(
+      {Key? key,
+      required this.hint,
+      this.icon,
+      required this.controller,
+      this.validator,
+      this.passwordToggler,
+      this.isTextObscure = false,
+      this.keyboardType = TextInputType.text,
+      this.maxLength,
+      this.enabled,
+      this.backgroundColor,
+      this.borderColor,
+      this.onTap})
+      : super(key: key);
 
   final String hint;
   final Widget? icon;
@@ -27,6 +28,7 @@ class TextFieldWithBorder extends StatelessWidget {
   final bool? enabled;
   final Color? backgroundColor;
   final Color? borderColor;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class TextFieldWithBorder extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10, right: 5),
       alignment: Alignment.center,
       child: TextFormField(
+        onTap: onTap,
         obscureText: isTextObscure,
         maxLength: maxLength,
         controller: controller,

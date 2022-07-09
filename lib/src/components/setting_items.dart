@@ -1,9 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../views/signin_signup_screen.dart';
+import '../views/auth_screens/signin_signup_screen.dart';
 
 class SettingItem extends StatelessWidget {
   const SettingItem({
@@ -55,15 +56,19 @@ class SettingItem extends StatelessWidget {
                               width: 6,
                             ),
                             Text(
-                              "Logout",
-                              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, fontFamily: "Montserrat"),
+                              "LOGOUT",
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: "Montserrat"),
                             ),
                           ],
                         ),
                       ),
                       Text(
-                        "Logoutformapp",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, fontFamily: "Montserrat"),
+                        "Are you sure you want to logout?",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500, fontFamily: "Montserrat"),
                       ),
                       Stack(
                         children: [
@@ -71,11 +76,7 @@ class SettingItem extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
-                                onTap: () {
-                                  GetStorage().erase();
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context, SigninSignupScreen.routeName, (route) => false);
-                                },
+                                onTap: () {},
                                 child: Container(
                                   decoration: const BoxDecoration(
                                     color: Color(0xff997264),
@@ -101,7 +102,8 @@ class SettingItem extends StatelessWidget {
                                 child: Container(
                                   decoration: const BoxDecoration(
                                     color: Color(0xff805B4E),
-                                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(8)),
+                                    borderRadius:
+                                        BorderRadius.only(bottomRight: Radius.circular(8)),
                                   ),
                                   height: 53,
                                   width: screenSize.width * 0.4,
@@ -163,7 +165,10 @@ class SettingItem extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8.0, right: 6.0),
       child: InkWell(
         onTap: () {
-          if (title == "Logout" || title == "Ausloggen" || title == "Se déconnecter" || title == "Se déconnecter.") {
+          if (title == "Logout" ||
+              title == "Ausloggen" ||
+              title == "Se déconnecter" ||
+              title == "Se déconnecter.") {
             showDialog();
           } else if (pageRoute != null) {
             Navigator.pushNamed(context, pageRoute!);
@@ -185,8 +190,10 @@ class SettingItem extends StatelessWidget {
                   child: Container(
                     height: 30,
                     width: 30,
-                    decoration: BoxDecoration(color: const Color(0xff997264).withOpacity(0.2), shape: BoxShape.circle),
-                    child: const Center(child: Icon(Icons.navigate_next, color: Colors.white, size: 19)),
+                    decoration: BoxDecoration(
+                        color: const Color(0xff997264).withOpacity(0.2), shape: BoxShape.circle),
+                    child: const Center(
+                        child: Icon(Icons.navigate_next, color: Colors.white, size: 19)),
                   ),
                 ),
             title: Text(

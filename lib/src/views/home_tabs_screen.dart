@@ -1,4 +1,3 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:vla/src/views/profile_screen.dart';
 import 'package:vla/src/views/products_screen.dart';
@@ -7,7 +6,7 @@ import 'history_screen.dart';
 import 'home_screen.dart';
 
 class HomeTabsScreen extends StatefulWidget {
-  HomeTabsScreen({Key? key}) : super(key: key);
+  const HomeTabsScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeTabsScreen> createState() => _HomeTabsScreenState();
@@ -16,13 +15,13 @@ class HomeTabsScreen extends StatefulWidget {
 class _HomeTabsScreenState extends State<HomeTabsScreen> {
   int activeTabIndex = 0;
 
-  int tabIndex =0;
+  int tabIndex = 0;
 
   final List<Widget> tabScreens = [
     HomeScreen(),
     ProductScreen(),
-    HistoryScreen(),
-    ProfileScreen(),
+    const HistoryScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -43,13 +42,14 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
             child: BottomNavigationBar(
                 backgroundColor: const Color(0xff2B2929),
                 currentIndex: activeTabIndex,
-                onTap: (index)  {
-                setState(() {
-                  activeTabIndex = index;
-                });},
+                onTap: (index) {
+                  setState(() {
+                    activeTabIndex = index;
+                  });
+                },
                 //tabIndex = index,
-                    // ontapBottomNav(
-                    // tabIndex: index, context: context),
+                // ontapBottomNav(
+                // tabIndex: index, context: context),
                 type: BottomNavigationBarType.fixed,
                 unselectedLabelStyle: const TextStyle(
                   fontFamily: "Montserrat",
@@ -65,12 +65,12 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
                 unselectedItemColor: Colors.white.withOpacity(.4),
                 items: [
                   buildTab(
-                    // name: Localization.of(context)!.date!,
+                      // name: Localization.of(context)!.date!,
                       name: "Home",
                       iconAddress: 'assets/images/home@3x.png',
                       isActive: activeTabIndex == 0 ? true : false),
                   buildTab(
-                      name:"Product",
+                      name: "Product",
                       iconAddress: 'assets/images/nearMe@3x.png',
                       isActive: activeTabIndex == 1 ? true : false),
                   buildTab(
@@ -97,9 +97,7 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
   }
 
   BottomNavigationBarItem buildTab(
-      {required String name,
-        required String iconAddress,
-        required bool isActive}) {
+      {required String name, required String iconAddress, required bool isActive}) {
     return BottomNavigationBarItem(
       icon: Padding(
         padding: const EdgeInsets.only(bottom: 5, top: 5),

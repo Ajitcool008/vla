@@ -4,19 +4,19 @@ import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:vla/src/views/home_screen.dart';
 
-import '../components/custom_button.dart';
-import '../components/otp_timerr.dart';
-import '../controllers/auth_controller.dart';
-import 'home_tabs_screen.dart';
+import '../../components/custom_button.dart';
+import '../../components/otp_timerr.dart';
+import '../../controllers/auth_controller.dart';
+import '../home_tabs_screen.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   static String routeName = '/verifyOtpScreen';
 
- const VerifyOtpScreen({Key? key}) : super(key: key);
+  const VerifyOtpScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-     var con = Get.find<AuthController>();
-   
+    var con = Get.find<AuthController>();
+
     Size screenSize = MediaQuery.of(context).size;
 
     return LoaderOverlay(
@@ -105,7 +105,8 @@ class VerifyOtpScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     maxLength: 1,
                                     style: TextStyle(
-                                      color: con.isStartTypingOtp1.value ? Colors.black : Colors.white,
+                                      color:
+                                          con.isStartTypingOtp1.value ? Colors.black : Colors.white,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w600,
                                       fontSize: screenSize.width * .06,
@@ -117,15 +118,18 @@ class VerifyOtpScreen extends StatelessWidget {
                                       counterText: "",
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       disabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                     ),
                                   ),
@@ -149,7 +153,8 @@ class VerifyOtpScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     maxLength: 1,
                                     style: TextStyle(
-                                      color: con.isStartTypingOtp2.value ? Colors.black : Colors.white,
+                                      color:
+                                          con.isStartTypingOtp2.value ? Colors.black : Colors.white,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w600,
                                       fontSize: screenSize.width * .06,
@@ -161,15 +166,18 @@ class VerifyOtpScreen extends StatelessWidget {
                                       counterText: "",
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       disabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                     ),
                                   ),
@@ -193,7 +201,8 @@ class VerifyOtpScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     maxLength: 1,
                                     style: TextStyle(
-                                      color: con.isStartTypingOtp3.value ? Colors.black : Colors.white,
+                                      color:
+                                          con.isStartTypingOtp3.value ? Colors.black : Colors.white,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w600,
                                       fontSize: screenSize.width * .06,
@@ -205,15 +214,18 @@ class VerifyOtpScreen extends StatelessWidget {
                                       counterText: "",
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       disabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                     ),
                                   ),
@@ -237,7 +249,8 @@ class VerifyOtpScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     maxLength: 1,
                                     style: TextStyle(
-                                      color: con.isStartTypingOtp4.value ? Colors.black : Colors.white,
+                                      color:
+                                          con.isStartTypingOtp4.value ? Colors.black : Colors.white,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w600,
                                       fontSize: screenSize.width * .06,
@@ -249,15 +262,18 @@ class VerifyOtpScreen extends StatelessWidget {
                                       counterText: "",
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       disabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                     ),
                                   ),
@@ -281,7 +297,8 @@ class VerifyOtpScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     maxLength: 1,
                                     style: TextStyle(
-                                      color: con.isStartTypingOtp5.value ? Colors.black : Colors.white,
+                                      color:
+                                          con.isStartTypingOtp5.value ? Colors.black : Colors.white,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w600,
                                       fontSize: screenSize.width * .06,
@@ -293,15 +310,18 @@ class VerifyOtpScreen extends StatelessWidget {
                                       counterText: "",
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       disabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                     ),
                                   ),
@@ -325,7 +345,8 @@ class VerifyOtpScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     maxLength: 1,
                                     style: TextStyle(
-                                      color: con.isStartTypingOtp6.value ? Colors.black : Colors.white,
+                                      color:
+                                          con.isStartTypingOtp6.value ? Colors.black : Colors.white,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w600,
                                       fontSize: screenSize.width * .06,
@@ -337,15 +358,18 @@ class VerifyOtpScreen extends StatelessWidget {
                                       counterText: "",
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       disabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(4),
-                                        borderSide: const BorderSide(width: .6, color: Color(0xff868686)),
+                                        borderSide:
+                                            const BorderSide(width: .6, color: Color(0xff868686)),
                                       ),
                                     ),
                                   ),
@@ -357,8 +381,8 @@ class VerifyOtpScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(horizontal: screenSize.width * .0122),
                               child: CustomButton(
                                 name: "Verify",
-                                fnToBeExecute: (){
-                                  Get.off(()=> HomeTabsScreen());
+                                fnToBeExecute: () {
+                                  con.verifyOTP(context: context);
                                 },
                               ),
                             ),
@@ -368,7 +392,7 @@ class VerifyOtpScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                  //  con.isOtpTimeCompleted.value ? con.resendOtp(context: context) : null;
+                                    //  con.isOtpTimeCompleted.value ? con.resendOtp(context: context) : null;
                                     // resend=false;
                                   },
                                   child: Row(
@@ -376,7 +400,9 @@ class VerifyOtpScreen extends StatelessWidget {
                                       Text(
                                         "Resend" + " : ",
                                         style: TextStyle(
-                                          color: con.isOtpTimeCompleted.value ? Colors.white : Colors.white.withOpacity(.4),
+                                          color: con.isOtpTimeCompleted.value
+                                              ? Colors.white
+                                              : Colors.white.withOpacity(.4),
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w600,
                                           fontSize: screenSize.width * .0438,
@@ -399,8 +425,11 @@ class VerifyOtpScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: screenSize.width * .1094, left: screenSize.width * .0389),
-              child: InkWell(onTap: () => Navigator.pop(context), child: Image.asset('assets/images/arrow-left.png')),
+              padding:
+                  EdgeInsets.only(top: screenSize.width * .1094, left: screenSize.width * .0389),
+              child: InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: Image.asset('assets/images/arrow-left.png')),
             ),
             Visibility(
               visible: con.isUnderProgress,
@@ -418,7 +447,9 @@ class VerifyOtpScreen extends StatelessWidget {
     );
   }
 }
+
 bool resend = false;
+
 class OtpTimer extends StatefulWidget {
   @override
   _OtpTimerState createState() => _OtpTimerState();
@@ -454,7 +485,11 @@ class _OtpTimerState extends State<OtpTimer> {
     _startTimer();
     return Text(
       '$_counter',
-      style: TextStyle(fontSize: screenSize.width * .0438, color: const Color(0xff56C02B), fontFamily: "Montserrat", fontWeight: FontWeight.w500),
+      style: TextStyle(
+          fontSize: screenSize.width * .0438,
+          color: const Color(0xff56C02B),
+          fontFamily: "Montserrat",
+          fontWeight: FontWeight.w500),
     );
   }
 }
