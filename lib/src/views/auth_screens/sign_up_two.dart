@@ -18,12 +18,12 @@ class CreateProfileForm2 extends StatelessWidget {
       backgroundColor: const Color(0xff282727),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/Login.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: const BoxDecoration(color: Colors.white
+            // image: DecorationImage(
+            //   image: AssetImage('assets/images/Login.png'),
+            //   fit: BoxFit.cover,
+            // ),
+            ),
         child: SizedBox(
           height: screenSize.height,
           child: Padding(
@@ -43,11 +43,9 @@ class CreateProfileForm2 extends StatelessWidget {
                           width: screenSize.width * .28,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
-                              border: Border.all(
-                                  color: const Color(0xffFFFFFF), style: BorderStyle.solid),
-                              image: DecorationImage(
-                                  image: AssetImage('assets/images/profile.png'),
-                                  fit: BoxFit.cover)),
+                              border: Border.all(color: const Color(0xffFFFFFF), style: BorderStyle.solid),
+                              image:
+                                  DecorationImage(image: AssetImage('assets/images/profile.png'), fit: BoxFit.cover)),
                         ),
                       ],
                     ),

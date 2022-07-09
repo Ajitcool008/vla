@@ -5,5 +5,6 @@ import '../controllers/auth_controller.dart';
 
 class AppManager {
   static StatusHelper statusHelper = StatusHelper();
+  static LoginDetails loginHelper = LoginDetails();
   static AuthController authController = Get.find<AuthController>();
 }

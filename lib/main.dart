@@ -14,7 +14,6 @@ Future<void> main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await GetStorage.init();
-  Get.put(AuthController(), permanent: true);
   runApp(const MyApp());
 }
 

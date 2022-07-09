@@ -62,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
               onTap: () {
                 AppManager.statusHelper.setLoginStatus(false);
                 GetStorage().erase();
-                Get.offAll(SigninSignupScreen());
+                Get.offAll(() => SigninSignupScreen());
               },
               title: "Logout",
               trailing: const Icon(null),

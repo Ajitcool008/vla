@@ -172,7 +172,7 @@ class ProductScreen extends StatelessWidget {
                             AppSnackbar.showSnackbar("INFO", 'Enter some value', AlertType.info);
                           } else {
                             var checkPin = await UtilityHelper().getPincodeCheck(
-                                pincode: AppManager.authController.restoreStudentListModel().data?.pincode ?? "");
+                                pincode: AppManager.loginHelper.restoreStudentListModel().data?.pincode ?? "");
                             if (checkPin) {
                               var dataSet = {
                                 "operation": "ProductPrice",

@@ -18,12 +18,12 @@ class CreateProfileForm3 extends StatelessWidget {
       backgroundColor: const Color(0xff282727),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/Login.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: const BoxDecoration(color: Colors.white
+            // image: DecorationImage(
+            //   image: AssetImage('assets/images/Login.png'),
+            //   fit: BoxFit.cover,
+            // ),
+            ),
         child: SizedBox(
           height: screenSize.height,
           child: Padding(
