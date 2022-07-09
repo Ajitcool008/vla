@@ -43,7 +43,6 @@ class CreateProfileForm3 extends StatelessWidget {
                     SizedBox(height: 30),
                     InkWell(
                       onTap: () {
-                        print("cgeck");
                         con.pickImage(context: context);
                       },
                       child: TextFieldWithBorder(

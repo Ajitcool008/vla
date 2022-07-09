@@ -21,8 +21,10 @@ class ProductScreen extends StatelessWidget {
         child: Scaffold(
       backgroundColor: Colors.brown,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        elevation: 1.0,
+        backgroundColor: Colors.brown,
         automaticallyImplyLeading: false,
+        centerTitle: true,
         title: const Center(
             child: const Text(
           'Product',
@@ -42,32 +44,32 @@ class ProductScreen extends StatelessWidget {
           SizedBox(height: 40, child: filterOffers(con)),
           SizedBox(height: screenSize.width * .03),
           Container(
-            height: Get.height * 0.07,
+            height: Get.height * 0.06,
             // width: Get.width * 0.999,
             padding: const EdgeInsets.all(8),
-            decoration: const BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Color.fromARGB(255, 4, 94, 250)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
                   'Name',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 const Text(
                   'Price',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 const Text(
                   'Ton',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 const Text(
                   'Piece',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 const Text(
                   'Action',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],
             ),
@@ -132,9 +134,17 @@ class ProductScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        con.products[index].name,
-                        style: TextStyle(color: Colors.white),
+                      Column(
+                        children: [
+                          Text(
+                            con.products[index].name,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            con.products[index].averageWeight,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
                       ),
                       Text(
                         con.products[index].price,
@@ -158,52 +168,56 @@ class ProductScreen extends StatelessWidget {
                                   enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
                       InkWell(
                         onTap: () async {
-                          var checkPin = await UtilityHelper().getPincodeCheck(
-                              pincode: AppManager.authController.restoreStudentListModel().data?.pincode ?? "");
-                          if (checkPin) {
-                            var dataSet = {
-                              "operation": "ProductPrice",
-                              "Productid": con.products[index].productID,
-                              "InTon": con.products[index].ton.text,
-                              "Pcs": con.products[index].piece.text
-                            };
-                            var productPriceData = await con.getProductVal(input: dataSet);
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: Text(productPriceData.name),
-                                  content: SizedBox(
-                                    height: 80,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Text("Calculated Weight : " + productPriceData.calculatedWeight),
-                                        Text("Calculated Price : " + productPriceData.calculatedPrice.toString()),
-                                      ],
-                                    ),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      child: Text("CANCEL"),
-                                      onPressed: () {
-                                        Get.back();
-                                      },
-                                    ),
-                                    TextButton(
-                                      child: Text("CONTINUE"),
-                                      onPressed: () {
-                                        con.addCart(item: productPriceData);
-                                        Get.back();
-                                      },
-                                    )
-                                  ],
-                                );
-                                ;
-                              },
-                            );
+                          if (con.products[index].piece.text.isEmpty && con.products[index].ton.text.isEmpty) {
+                            AppSnackbar.showSnackbar("INFO", 'Enter some value', AlertType.info);
                           } else {
-                            AppSnackbar.showSnackbar("INFO", 'Pincode issue', AlertType.info);
+                            var checkPin = await UtilityHelper().getPincodeCheck(
+                                pincode: AppManager.authController.restoreStudentListModel().data?.pincode ?? "");
+                            if (checkPin) {
+                              var dataSet = {
+                                "operation": "ProductPrice",
+                                "Productid": con.products[index].productID,
+                                "InTon": con.products[index].ton.text,
+                                "Pcs": con.products[index].piece.text
+                              };
+                              var productPriceData = await con.getProductVal(input: dataSet);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text(productPriceData.name),
+                                    content: SizedBox(
+                                      height: 80,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Calculated Weight : " + productPriceData.calculatedWeight),
+                                          Text("Calculated Price : " + productPriceData.calculatedPrice.toString()),
+                                        ],
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        child: Text("CANCEL"),
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                      ),
+                                      TextButton(
+                                        child: Text("CONTINUE"),
+                                        onPressed: () {
+                                          con.addCart(item: productPriceData);
+                                          Get.back();
+                                        },
+                                      )
+                                    ],
+                                  );
+                                  ;
+                                },
+                              );
+                            } else {
+                              AppSnackbar.showSnackbar("INFO", 'Pincode issue', AlertType.info);
+                            }
                           }
                         },
                         child: Container(

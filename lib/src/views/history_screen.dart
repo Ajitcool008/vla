@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({Key? key}) : super(key: key);
 
@@ -13,21 +12,20 @@ class HistoryScreen extends StatelessWidget {
         backgroundColor: Colors.brown,
         appBar: _appBar(context, screenSize),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-                _historyCoupon(
-                screenSize: screenSize,
-                context: context,
-                //img: EndPoints.imageUrlBase + coupon.icon,
-               // title: coupon.businessName,
-               // youSave: coupon.discountPrice,
-               // date: coupon.date,
-              )
-            ])
-          ),
-        ),
-      );
+            child: Column(children: [
+          _historyCoupon(
+            screenSize: screenSize,
+            context: context,
+            //img: EndPoints.imageUrlBase + coupon.icon,
+            // title: coupon.businessName,
+            // youSave: coupon.discountPrice,
+            // date: coupon.date,
+          )
+        ])),
+      ),
+    );
   }
+
   AppBar _appBar(BuildContext context, Size screenSize) {
     return AppBar(
       automaticallyImplyLeading: false,
@@ -48,9 +46,12 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _historyCoupon({required Size screenSize, required BuildContext context,}) {
+  Widget _historyCoupon({
+    required Size screenSize,
+    required BuildContext context,
+  }) {
     return Padding(
-      padding: EdgeInsets.only(left: Get.width*0.02, right: Get.width*0.02, bottom: screenSize.width * 0.02),
+      padding: EdgeInsets.only(left: Get.width * 0.02, right: Get.width * 0.02, bottom: screenSize.width * 0.02),
       child: Container(
         height: screenSize.width * 0.241,
         width: double.infinity,
@@ -77,8 +78,10 @@ class HistoryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('title',
-                    style: TextStyle(color: Colors.white),),
+                    Text(
+                      'title',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     //_couponTitile(title),
                     //_savedRupeesRow(youSave, context),
                     //_redeemedDate(date, context),
@@ -94,6 +97,7 @@ class HistoryScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _redeemedStampImage() {
     return Image.asset("assets/images/redeemed@3x.png", height: 85, width: 60);
   }

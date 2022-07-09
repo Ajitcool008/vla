@@ -37,7 +37,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.brown,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.brown,
+        elevation: 1.0,
         leading: IconButton(
           onPressed: () {
             AppManager.statusHelper.setLoginStatus(false);
@@ -63,15 +64,16 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  width: Get.width * 0.24,
-                  child: const Text(
-                    'Name',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
+                const Text(
+                  'Name',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
                 const Text(
                   'Price',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                const Text(
+                  'Action',
                   style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
               ],
@@ -89,15 +91,11 @@ class HomeScreen extends StatelessWidget {
                     width: Get.width * 0.999,
                     decoration: BoxDecoration(color: Colors.brown[colorCodes[index]]),
                     child: Row(
-                      //crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
-                          width: Get.width * 0.24,
-                          child: Text(
-                            ' ${con.productData[index].name}',
-                            style: const TextStyle(color: Colors.white, fontSize: 18),
-                          ),
+                        Text(
+                          ' ${con.productData[index].name}',
+                          style: const TextStyle(color: Colors.white, fontSize: 18),
                         ),
                         Text(
                           con.productData[index].price,

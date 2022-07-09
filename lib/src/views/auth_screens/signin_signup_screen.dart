@@ -19,12 +19,12 @@ class SigninSignupScreen extends StatelessWidget {
       backgroundColor: Colors.brown,
       body: SingleChildScrollView(
         child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/Login.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
+          decoration: const BoxDecoration(color: Colors.white
+              // image: DecorationImage(
+              //   image: AssetImage('assets/images/Login.png'),
+              //   fit: BoxFit.cover,
+              // ),
+              ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,7 +75,7 @@ class SigninSignupScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: con.visible.value ? screenSize.width * .0413 : screenSize.width * .0438,
                       fontWeight: con.visible.value ? FontWeight.w400 : FontWeight.bold,
-                      color: con.visible.value ? const Color(0xffCEDAE2).withOpacity(.7) : Colors.white,
+                      color: con.visible.value ? Colors.black.withOpacity(.7) : Colors.black,
                       fontFamily: 'Adamina',
                     ),
                   ),
@@ -90,14 +90,14 @@ class SigninSignupScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: con.visible.value ? screenSize.width * .0438 : screenSize.width * .0413,
                         fontWeight: con.visible.value ? FontWeight.bold : FontWeight.w400,
-                        color: con.visible.value ? Colors.white : const Color(0xffCEDAE2).withOpacity(.7),
+                        color: con.visible.value ? Colors.black.withOpacity(.7) : Colors.black,
                         fontFamily: 'Adamina',
                       ),
                     )),
               ),
             ],
           ),
-          SizedBox(height: screenSize.width * .08),
+          SizedBox(height: 30),
           TextFieldWithBorder(
             hint: "Enter phone number",
             //icon: const SizedBox.shrink(),
@@ -106,7 +106,7 @@ class SigninSignupScreen extends StatelessWidget {
             keyboardType: TextInputType.phone,
             maxLength: 10,
           ),
-          SizedBox(height: screenSize.width * .1),
+          SizedBox(height: 20),
           CustomButton(
             name: "SendOTP",
             fnToBeExecute: () => con.sendOtp(context: context),
@@ -125,7 +125,7 @@ class SigninSignupScreen extends StatelessWidget {
       children: [
         const SizedBox.shrink(),
         Image.asset(
-          'assets/images/appLogoVertical@2x.png',
+          'assets/images/launcher_icon.png',
           height: 175,
           width: 100,
         ),

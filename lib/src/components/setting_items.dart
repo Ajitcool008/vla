@@ -11,13 +11,13 @@ class SettingItem extends StatelessWidget {
     Key? key,
     required this.title,
     this.trailing,
+    this.onTap,
     required this.leading,
-    this.pageRoute,
   }) : super(key: key);
   final String title;
   final Widget? trailing;
   final Widget leading;
-  final String? pageRoute;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -57,18 +57,14 @@ class SettingItem extends StatelessWidget {
                             ),
                             Text(
                               "LOGOUT",
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: "Montserrat"),
+                              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, fontFamily: "Montserrat"),
                             ),
                           ],
                         ),
                       ),
                       Text(
                         "Are you sure you want to logout?",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500, fontFamily: "Montserrat"),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, fontFamily: "Montserrat"),
                       ),
                       Stack(
                         children: [
@@ -102,8 +98,7 @@ class SettingItem extends StatelessWidget {
                                 child: Container(
                                   decoration: const BoxDecoration(
                                     color: Color(0xff805B4E),
-                                    borderRadius:
-                                        BorderRadius.only(bottomRight: Radius.circular(8)),
+                                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(8)),
                                   ),
                                   height: 53,
                                   width: screenSize.width * 0.4,
@@ -164,16 +159,7 @@ class SettingItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 6.0),
       child: InkWell(
-        onTap: () {
-          if (title == "Logout" ||
-              title == "Ausloggen" ||
-              title == "Se déconnecter" ||
-              title == "Se déconnecter.") {
-            showDialog();
-          } else if (pageRoute != null) {
-            Navigator.pushNamed(context, pageRoute!);
-          }
-        },
+        onTap: onTap,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -190,10 +176,8 @@ class SettingItem extends StatelessWidget {
                   child: Container(
                     height: 30,
                     width: 30,
-                    decoration: BoxDecoration(
-                        color: const Color(0xff997264).withOpacity(0.2), shape: BoxShape.circle),
-                    child: const Center(
-                        child: Icon(Icons.navigate_next, color: Colors.white, size: 19)),
+                    decoration: BoxDecoration(color: const Color(0xff997264).withOpacity(0.2), shape: BoxShape.circle),
+                    child: const Center(child: Icon(Icons.navigate_next, color: Colors.white, size: 19)),
                   ),
                 ),
             title: Text(
