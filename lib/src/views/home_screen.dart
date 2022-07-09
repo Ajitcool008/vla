@@ -45,15 +45,15 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             AppManager.statusHelper.setLoginStatus(false);
             GetStorage().erase();
-            Get.offAll(SigninSignupScreen());
+            Get.offAll(() => SigninSignupScreen());
           },
           icon: const Icon(Icons.logout),
         ),
-        title: const Center(
-            child: Text(
+        centerTitle: true,
+        title: Text(
           'Market',
           style: TextStyle(fontSize: 23),
-        )),
+        ),
       ),
       body: Column(
         children: [
