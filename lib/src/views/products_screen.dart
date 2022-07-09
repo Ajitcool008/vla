@@ -63,7 +63,7 @@ class ProductScreen extends StatelessWidget {
                                     child: Center(
                                       child: Text(
                                         con.productCart.length.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 11.0,
                                           fontWeight: FontWeight.bold,
