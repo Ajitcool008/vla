@@ -27,7 +27,7 @@ class LoginModelResponse {
         token: json["token"] ?? "",
         csuid: json["csuid"] ?? '',
         data: json["data"] != null ? Data.fromJson(json["data"]) : null,
-        expireAt: json["expireAt"].toString() ?? "",
+        expireAt: json["expireAt"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

@@ -16,20 +16,19 @@ class CartScreen extends StatelessWidget {
     final Size screenSize = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xff0EBE7F),
         // automaticallyImplyLeading: false,
         // leading: IconButton(
         //   onPressed: (){},
         //   icon: const Icon(Icons.shopping_cart),
         // ),
         centerTitle: true,
-        title: const Center(
-            child: const Text(
+        title: const Text(
           'Cart',
           style: TextStyle(fontSize: 23),
-        )),
+        ),
       ),
       floatingActionButton: ElevatedButton(
           onPressed: () async {

@@ -14,10 +14,10 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xff0EBE7F),
         title: Center(child: const Text('Profile')),
       ),
       body: SingleChildScrollView(
