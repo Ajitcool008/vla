@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vla/src/controllers/product_controller.dart';
@@ -22,7 +23,7 @@ class ProductScreen extends StatelessWidget {
       //backgroundColor: Colors.brown,
       appBar: AppBar(
         elevation: 1.0,
-        backgroundColor: Color(0xff0EBE7F),
+        backgroundColor: const Color(0xff0EBE7F),
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
@@ -34,11 +35,11 @@ class ProductScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => CartScreen());
+                Get.to(() => const CartScreen());
               },
               child: Obx(() => Stack(
                     children: <Widget>[
-                      IconButton(
+                      const IconButton(
                         icon: Icon(
                           Icons.shopping_cart,
                           color: Colors.white,
@@ -46,7 +47,7 @@ class ProductScreen extends StatelessWidget {
                         onPressed: null,
                       ),
                       con.productCart.length == 0
-                          ? Container()
+                          ? const SizedBox.shrink()
                           : Positioned(
                               top: 0,
                               right: 4,
@@ -89,7 +90,7 @@ class ProductScreen extends StatelessWidget {
             // width: Get.width * 0.999,
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Color.fromRGBO(14, 190, 127, 89),
+              color: const Color.fromRGBO(14, 190, 127, 89),
               border: Border.all(color: Colors.white, width: 2),
               //borderRadius: BorderRadius.circular(15)
             ),
@@ -132,10 +133,6 @@ class ProductScreen extends StatelessWidget {
             con,
             screenSize: screenSize,
             context: context,
-            //img: EndPoints.imageUrlBase + coupon.icon,
-            // title: coupon.businessName,
-            // youSave: coupon.discountPrice,
-            // date: coupon.date,
           )
         ],
       ),
@@ -159,7 +156,6 @@ class ProductScreen extends StatelessWidget {
             child: FilterOffer(
               offerName: con.categoryData[index].name,
               isActive: con.categoryData[index].isSelected,
-              // nearbyMerchantScreenController: screenController,
             ),
           );
         }));
@@ -175,8 +171,8 @@ class ProductScreen extends StatelessWidget {
       //Colors.green.shade100,
       Colors.green.shade100,
     ];
-    final decoration = const OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.green, width: 2.0),
+    const decoration = OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.green, width: 2.0),
     );
     return Obx(
       () => Expanded(
@@ -202,7 +198,7 @@ class ProductScreen extends StatelessWidget {
                       // ),
                       //border: Border.all(width: 0.4, color: const Color(0xff6D6D6D)),
                     ),
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -227,13 +223,13 @@ class ProductScreen extends StatelessWidget {
                             SizedBox(
                               height: Get.height * 0.012,
                             ),
-                            Text(
+                            const Text(
                               'Starts From',
                               style: TextStyle(color: Color(0xff0EBE7F), fontSize: 10, fontWeight: FontWeight.w800),
                             ),
                             Text(
                               con.products[index].price,
-                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 15),
+                              style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 15),
                             ),
                           ],
                         ),
@@ -241,17 +237,17 @@ class ProductScreen extends StatelessWidget {
                             height: 40,
                             width: 70,
                             child: TextField(
-                                style: TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                                 controller: con.products[index].ton,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
                         SizedBox(
                             height: 40,
                             width: 70,
                             child: TextField(
-                                style: TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                                 controller: con.products[index].piece,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
                         InkWell(
                             onTap: () async {
@@ -271,27 +267,28 @@ class ProductScreen extends StatelessWidget {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return AlertDialog(
+                                      return CupertinoAlertDialog(
                                         title: Text(productPriceData.name),
-                                        content: SizedBox(
-                                          height: 80,
+                                        content: Expanded(
+                                          // height: 80,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              Text("Product Weight : " + productPriceData.calculatedWeight),
-                                              Text("Product Price : " + productPriceData.calculatedPrice.toString()),
+                                              Text("Product Weight : ${productPriceData.calculatedWeight}"),
+                                              Text("Product Price : ${productPriceData.calculatedPrice}"),
                                             ],
                                           ),
                                         ),
                                         actions: [
                                           TextButton(
-                                            child: Text("CANCEL"),
+                                            child: const Text("CANCEL"),
                                             onPressed: () {
                                               Get.back();
                                             },
                                           ),
                                           TextButton(
-                                            child: Text("CONTINUE"),
+                                            child: const Text("CONTINUE"),
                                             onPressed: () {
                                               con.addCart(item: productPriceData);
                                               Get.back();
@@ -307,7 +304,7 @@ class ProductScreen extends StatelessWidget {
                                 }
                               }
                             },
-                            child: Icon(Icons.add_shopping_cart_outlined)),
+                            child: const Icon(Icons.add_shopping_cart_outlined)),
                       ],
                     ),
                   ),
