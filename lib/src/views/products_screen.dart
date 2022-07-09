@@ -276,8 +276,8 @@ class ProductScreen extends StatelessWidget {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
-                                            Text("Calculated Weight : " + productPriceData.calculatedWeight),
-                                            Text("Calculated Price : " + productPriceData.calculatedPrice.toString()),
+                                            Text("Product Weight : " + productPriceData.calculatedWeight),
+                                            Text("Product Price : " + productPriceData.calculatedPrice.toString()),
                                           ],
                                         ),
                                       ),
@@ -305,10 +305,7 @@ class ProductScreen extends StatelessWidget {
                               }
                             }
                           },
-                          child: IconButton(
-                            onPressed: (){},
-                            icon: Icon(Icons.add_shopping_cart_outlined),
-                          )
+                          child: Icon(Icons.add_shopping_cart_outlined)
                         ),
                       ],
                     ),
