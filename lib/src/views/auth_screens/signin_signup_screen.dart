@@ -8,11 +8,10 @@ import '../../components/text_field_with_border.dart';
 
 class SigninSignupScreen extends StatelessWidget {
   const SigninSignupScreen({Key? key}) : super(key: key);
-  static String routeName = '/signinSignupScreen';
 
   @override
   Widget build(BuildContext context) {
-    var con = Get.find<AuthController>();
+    var con = Get.put(AuthController());
 
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(

@@ -30,12 +30,54 @@ class ProductScreen extends StatelessWidget {
           'Product',
           style: TextStyle(fontSize: 23),
         )),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(CartScreen());
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: GestureDetector(
+              onTap: () {
+                Get.to(() => CartScreen());
               },
-              icon: const Icon(Icons.shopping_cart))
+              child: Obx(() => Stack(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.white,
+                        ),
+                        onPressed: null,
+                      ),
+                      con.productCart.length == 0
+                          ? Container()
+                          : Positioned(
+                              top: 0,
+                              right: 4,
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    height: 20.0,
+                                    width: 20.0,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.yellow,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        con.productCart.length.toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 11.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                    ],
+                  )),
+            ),
+          )
         ],
       ),
       body: Column(
@@ -172,7 +214,7 @@ class ProductScreen extends StatelessWidget {
                             AppSnackbar.showSnackbar("INFO", 'Enter some value', AlertType.info);
                           } else {
                             var checkPin = await UtilityHelper().getPincodeCheck(
-                                pincode: AppManager.authController.restoreStudentListModel().data?.pincode ?? "");
+                                pincode: AppManager.loginHelper.restoreStudentListModel().data?.pincode ?? "");
                             if (checkPin) {
                               var dataSet = {
                                 "operation": "ProductPrice",

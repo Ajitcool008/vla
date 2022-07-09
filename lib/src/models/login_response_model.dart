@@ -19,15 +19,15 @@ class LoginModelResponse {
   String token;
   String csuid;
   Data? data;
-  int expireAt;
+  String expireAt;
 
   factory LoginModelResponse.fromJson(Map<String, dynamic> json) => LoginModelResponse(
         message: json["message"],
         result: json["result"],
-        token: json["token"],
-        csuid: json["csuid"],
+        token: json["token"] ?? "",
+        csuid: json["csuid"] ?? '',
         data: json["data"] != null ? Data.fromJson(json["data"]) : null,
-        expireAt: json["expireAt"],
+        expireAt: json["expireAt"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

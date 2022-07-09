@@ -99,16 +99,6 @@ class AuthController extends GetxController {
     focusnode.requestFocus();
   }
 
-  final getBox = GetStorage();
-  void storeStudentList(LoginModelResponse model) {
-    getBox.write('StudentList', model.toJson());
-  }
-
-  LoginModelResponse restoreStudentListModel() {
-    final map = getBox.read('StudentList') ?? {};
-    return LoginModelResponse.fromJson(map);
-  }
-
   // To send otp and navigate to otp screen
   Future sendOtp({required BuildContext context}) async {
     GetStorage().write('userPhone', phoneController.text);
@@ -237,10 +227,11 @@ class AuthController extends GetxController {
 
     var response = await NetworkManager.instance.getDio().post(Endpoints.registers1, data: input);
     LoginModelResponse res = LoginModelResponse.fromJson(response.data);
-    storeStudentList(res);
+    AppManager.loginHelper.setLoginDetails(res);
     GetStorage().write(Constants.token, res.token);
     GetStorage().write(Constants.csDATA, res.csuid);
     if (res.message == "Step2") {
+      AppManager.statusHelper.setLoginStatus(true);
       Get.off(() => const CreateProfileForm2());
     } else {
       AppManager.statusHelper.setLoginStatus(true);
@@ -256,13 +247,15 @@ class AuthController extends GetxController {
         "operation": "RegisterS2",
         "user": {
           "UserName": userPhone,
-          "csuid": restoreStudentListModel().csuid,
+          "csuid": AppManager.loginHelper.restoreStudentListModel().csuid,
           "CName": nameController.text,
           "Pincode": pincodeController.text
         }
       };
 
       var responseRegister = await NetworkManager.instance.getDio().post(Endpoints.registers2, data: register2Input);
+      LoginModelResponse res = LoginModelResponse.fromJson(responseRegister.data);
+      GetStorage().write(Constants.token, res.token);
       Get.off(() => const CreateProfileForm3());
     }
   }
@@ -274,12 +267,22 @@ class AuthController extends GetxController {
         "GST": gstController.text,
         "DocumentType": "1",
         "FileImage": await dio.MultipartFile.fromFile(
-          profileImagePath,
-          filename: profileImagePath.split("/").last,
+          documentController.text,
+          filename: documentController.text.split("/").last,
         ),
       });
+      try {
+        var responseRegister = await NetworkManager.instance.getDio().post(Endpoints.registers3, data: formData);
 
-      var responseRegister = await NetworkManager.instance.getDio().post(Endpoints.registers3, data: formData);
+        LoginModelResponse res = LoginModelResponse.fromJson(responseRegister.data);
+        AppManager.loginHelper.setLoginDetails(res);
+        GetStorage().write(Constants.token, res.token);
+        AppManager.statusHelper.setLoginStatus(true);
+
+        Get.offAll(() => HomeTabsScreen());
+      } catch (e) {
+        AppSnackbar.showSnackbar("ERROR", "Something went wrong", AlertType.error);
+      }
     }
   }
 

@@ -9,11 +9,10 @@ class HistoryScreen extends StatelessWidget {
     final Size screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-       // backgroundColor: Colors.brown,
+        backgroundColor: Colors.brown,
         appBar: _appBar(context, screenSize),
         body: SingleChildScrollView(
             child: Column(children: [
-              SizedBox(height: Get.height*0.02,),
           _historyCoupon(
             screenSize: screenSize,
             context: context,
@@ -30,7 +29,7 @@ class HistoryScreen extends StatelessWidget {
   AppBar _appBar(BuildContext context, Size screenSize) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Color(0xff0EBE7F),
+      backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
       centerTitle: true,
       //leading: InkWell(child: Image.asset('assets/images/arrow-left.png'), onTap: () => Navigator.pop(context)),
@@ -38,7 +37,7 @@ class HistoryScreen extends StatelessWidget {
         "History",
         style: TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: screenSize.width * .055,
+          fontSize: screenSize.width * .0438,
           color: Colors.white,
           fontFamily: 'Montserrat',
           letterSpacing: 0.2,
@@ -57,20 +56,12 @@ class HistoryScreen extends StatelessWidget {
         height: screenSize.width * 0.241,
         width: double.infinity,
         decoration: BoxDecoration(
-          decoration:  BoxDecoration(
-            border: Border(
-              left: BorderSide(color: Color(0xff0EBE7F),width: 6),
-              right: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
-              top: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
-              bottom: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
-            ),
-          ),
-          // boxShadow: const [
-          //   BoxShadow(color: Color(0xFF6C6868), offset: Offset(0, 2), blurRadius: 3.0, spreadRadius: -2),
-          // ],
-         // color: const Color(0xff282727),
+          boxShadow: const [
+            BoxShadow(color: Color(0xFF6C6868), offset: Offset(0, 2), blurRadius: 3.0, spreadRadius: -2),
+          ],
+          color: const Color(0xff282727),
           borderRadius: const BorderRadius.all(Radius.circular(4)),
-         // border: Border.all(width: 0.4, color: const Color(0xff6D6D6D)),
+          border: Border.all(width: 0.4, color: const Color(0xff6D6D6D)),
         ),
         padding: EdgeInsets.all(8),
         child: Row(
