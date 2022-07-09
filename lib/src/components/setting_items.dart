@@ -165,7 +165,7 @@ class SettingItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             side: BorderSide(width: 0.5, color: const Color(0xffC9A676).withOpacity(0.2)),
           ),
-          color: const Color(0xff292929),
+         // color: const Color(0xff292929),
           child: ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
             // iconColor: Colors.white,
@@ -176,8 +176,8 @@ class SettingItem extends StatelessWidget {
                   child: Container(
                     height: 30,
                     width: 30,
-                    decoration: BoxDecoration(color: const Color(0xff997264).withOpacity(0.2), shape: BoxShape.circle),
-                    child: const Center(child: Icon(Icons.navigate_next, color: Colors.white, size: 19)),
+                    decoration: BoxDecoration(color:  Colors.grey.withOpacity(0.2), shape: BoxShape.circle),
+                    child: const Center(child: Icon(Icons.navigate_next, color: Colors.black, size: 19)),
                   ),
                 ),
             title: Text(
@@ -185,7 +185,7 @@ class SettingItem extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontFamily: "Montserrat",
-                color: const Color(0xffffffff),
+                color: Colors.black,
                 fontSize: screenSize.width * .0444,
                 letterSpacing: .2,
               ),

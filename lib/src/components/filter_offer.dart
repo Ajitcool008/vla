@@ -18,12 +18,13 @@ class FilterOffer extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: screenSize.width * .024),
       height: screenSize.width * .0826,
       decoration: BoxDecoration(
-        color: isActive ? const Color(0xff997264) : const Color(0xff342924),
-        border: isActive ? null : Border.all(width: .5, color: const Color(0xff7B7878)),
-        borderRadius: BorderRadius.all(Radius.circular(screenSize.width * .0097)),
+        color: isActive ? const Color(0xff0EBE7F) :  Colors.white,
+        border: isActive ? null : Border.all(width: .5, color: const Color(0xff0EBE7F)),
+        borderRadius: BorderRadius.all(Radius.circular(screenSize.width * .06)),
+        //borderRadius: BorderRadius.all(Radius.circular(screenSize.width * .0097)),
       ),
       alignment: Alignment.center,
-      child: Text(
+      child:isActive ? Text(
         offerName,
         style: TextStyle(
           color: Colors.white,
@@ -31,7 +32,15 @@ class FilterOffer extends StatelessWidget {
           fontSize: screenSize.width * .034,
           fontWeight: FontWeight.w600,
         ),
-      ),
+      ):Text(
+        offerName,
+        style: TextStyle(
+          color: Color(0xff0EBE7F),
+          fontFamily: 'Montserrat',
+          fontSize: screenSize.width * .034,
+          fontWeight: FontWeight.w600,
+        ),
+      )
     );
   }
 }
