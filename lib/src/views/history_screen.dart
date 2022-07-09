@@ -9,7 +9,7 @@ class HistoryScreen extends StatelessWidget {
     final Size screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.white,
         appBar: _appBar(context, screenSize),
         body: SingleChildScrollView(
             child: Column(children: [
@@ -29,8 +29,8 @@ class HistoryScreen extends StatelessWidget {
   AppBar _appBar(BuildContext context, Size screenSize) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
+      backgroundColor: Color(0xff0EBE7F),
+      // shadowColor: Colors.transparent,
       centerTitle: true,
       //leading: InkWell(child: Image.asset('assets/images/arrow-left.png'), onTap: () => Navigator.pop(context)),
       title: Text(

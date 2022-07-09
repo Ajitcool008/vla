@@ -46,7 +46,7 @@ class ProductScreen extends StatelessWidget {
                         onPressed: null,
                       ),
                       con.productCart.length == 0
-                          ? Container()
+                          ? SizedBox.shrink()
                           : Positioned(
                               top: 0,
                               right: 4,
