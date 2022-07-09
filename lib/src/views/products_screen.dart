@@ -57,14 +57,14 @@ class ProductScreen extends StatelessWidget {
                                     height: 20.0,
                                     width: 20.0,
                                     decoration: const BoxDecoration(
-                                      color: Colors.yellow,
+                                      color: Colors.white,
                                       shape: BoxShape.circle,
                                     ),
                                     child: Center(
                                       child: Text(
                                         con.productCart.length.toString(),
-                                        style: const TextStyle(
-                                          color: Colors.white,
+                                        style: TextStyle(
+                                          color: Color(0xff0EBE7F),
                                           fontSize: 11.0,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -89,30 +89,40 @@ class ProductScreen extends StatelessWidget {
             height: Get.height * 0.06,
             // width: Get.width * 0.999,
             padding: const EdgeInsets.all(8),
-            decoration:  BoxDecoration(color: Colors.greenAccent.shade400,
+            decoration:  BoxDecoration(color: Color.fromRGBO(14, 190, 127, 89),
             border: Border.all(color: Colors.white,width: 2),
-            borderRadius: BorderRadius.circular(15)),
+            //borderRadius: BorderRadius.circular(15)
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
                   'Name',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
-                const Text(
-                  'Price',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                Padding(
+                  padding:  EdgeInsets.only(left: Get.width*0.06),
+                  child: const Text(
+                    'Price',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(left: Get.width*0.12),
+                  child: const Text(
+                    'Ton',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(left: Get.width*0.14),
+                  child: const Text(
+                    'Piece',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
                 ),
                 const Text(
-                  'Ton',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                const Text(
-                  'Piece',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                const Text(
-                  'Action',
+                  '',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],
@@ -196,21 +206,34 @@ class ProductScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Text(
+                          con.products[index].name,
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 13),
+                        ),
+                        // Column(
+                        //   children: [
+                        //     Text(
+                        //       con.products[index].name,
+                        //       style: TextStyle(color: Colors.black),
+                        //     ),
+                        //     // Text(
+                        //     //   con.products[index].averageWeight,
+                        //     //   style: TextStyle(color: Colors.black),
+                        //     // ),
+                        //   ],
+                        // ),
                         Column(
                           children: [
+                            SizedBox(height: Get.height*0.012,),
                             Text(
-                              con.products[index].name,
-                              style: TextStyle(color: Colors.black),
+                              'Starts From',
+                              style: TextStyle(color:Color(0xff0EBE7F),fontSize: 10, fontWeight: FontWeight.w800),
                             ),
                             Text(
-                              con.products[index].averageWeight,
-                              style: TextStyle(color: Colors.black),
+                              con.products[index].price,
+                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 15),
                             ),
                           ],
-                        ),
-                        Text(
-                          con.products[index].price,
-                          style: TextStyle(color: Colors.black),
                         ),
                         SizedBox(
                             height: 40,
@@ -282,17 +305,10 @@ class ProductScreen extends StatelessWidget {
                               }
                             }
                           },
-                          child: Container(
-                            height: Get.height * 0.04,
-                            width: Get.width * 0.2,
-                            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                            child: Center(
-                              child: Text(
-                                'Add',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ),
-                          ),
+                          child: IconButton(
+                            onPressed: (){},
+                            icon: Icon(Icons.add_shopping_cart_outlined),
+                          )
                         ),
                       ],
                     ),
