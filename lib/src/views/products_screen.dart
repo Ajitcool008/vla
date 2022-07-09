@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vla/src/controllers/product_controller.dart';
@@ -132,10 +133,6 @@ class ProductScreen extends StatelessWidget {
             con,
             screenSize: screenSize,
             context: context,
-            //img: EndPoints.imageUrlBase + coupon.icon,
-            // title: coupon.businessName,
-            // youSave: coupon.discountPrice,
-            // date: coupon.date,
           )
         ],
       ),
@@ -159,7 +156,6 @@ class ProductScreen extends StatelessWidget {
             child: FilterOffer(
               offerName: con.categoryData[index].name,
               isActive: con.categoryData[index].isSelected,
-              // nearbyMerchantScreenController: screenController,
             ),
           );
         }));
@@ -175,8 +171,8 @@ class ProductScreen extends StatelessWidget {
       //Colors.green.shade100,
       Colors.green.shade100,
     ];
-    final decoration = const OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.green, width: 2.0),
+    const decoration = OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.green, width: 2.0),
     );
     return Obx(
       () => Expanded(
@@ -208,7 +204,7 @@ class ProductScreen extends StatelessWidget {
                       children: [
                         Text(
                           con.products[index].name,
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 13),
+                          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 13),
                         ),
                         // Column(
                         //   children: [
@@ -271,12 +267,13 @@ class ProductScreen extends StatelessWidget {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return AlertDialog(
+                                      return CupertinoAlertDialog(
                                         title: Text(productPriceData.name),
-                                        content: SizedBox(
-                                          height: 80,
+                                        content: Expanded(
+                                          // height: 80,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
                                               Text("Product Weight : " + productPriceData.calculatedWeight),
                                               Text("Product Price : " + productPriceData.calculatedPrice.toString()),
