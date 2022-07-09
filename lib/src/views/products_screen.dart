@@ -89,7 +89,9 @@ class ProductScreen extends StatelessWidget {
             height: Get.height * 0.06,
             // width: Get.width * 0.999,
             padding: const EdgeInsets.all(8),
-            decoration: const BoxDecoration(color: Color.fromARGB(255, 4, 94, 250)),
+            decoration:  BoxDecoration(color: Colors.greenAccent.shade400,
+            border: Border.all(color: Colors.white,width: 2),
+            borderRadius: BorderRadius.circular(15)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -158,123 +160,142 @@ class ProductScreen extends StatelessWidget {
     required Size screenSize,
     required BuildContext context,
   }) {
+    final List<Color> colorCodes = <Color>[
+      Colors.white,
+      //Colors.green.shade100,
+      Colors.green.shade100,
+    ];
     final decoration = const OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.green, width: 2.0),
     );
     return Obx(
       () => Expanded(
           child: ListView.builder(
+             // padding: const EdgeInsets.all(8),
+              // separatorBuilder: (BuildContext context, int index) => SizedBox(
+              //   height: Get.height * 0.02,
+              // ),
               itemCount: con.products.length,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xff282727),
-                    borderRadius: const BorderRadius.all(Radius.circular(4)),
-                    border: Border.all(width: 0.4, color: const Color(0xff6D6D6D)),
-                  ),
-                  padding: EdgeInsets.all(8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            con.products[index].name,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            con.products[index].averageWeight,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        con.products[index].price,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(
-                          height: 40,
-                          width: 70,
-                          child: TextField(
-                              style: TextStyle(color: Colors.white),
-                              controller: con.products[index].ton,
-                              decoration: InputDecoration(
-                                  enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
-                      SizedBox(
-                          height: 40,
-                          width: 70,
-                          child: TextField(
-                              style: TextStyle(color: Colors.white),
-                              controller: con.products[index].piece,
-                              decoration: InputDecoration(
-                                  enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
-                      InkWell(
-                        onTap: () async {
-                          if (con.products[index].piece.text.isEmpty && con.products[index].ton.text.isEmpty) {
-                            AppSnackbar.showSnackbar("INFO", 'Enter some value', AlertType.info);
-                          } else {
-                            var checkPin = await UtilityHelper().getPincodeCheck(
-                                pincode: AppManager.loginHelper.restoreStudentListModel().data?.pincode ?? "");
-                            if (checkPin) {
-                              var dataSet = {
-                                "operation": "ProductPrice",
-                                "Productid": con.products[index].productID,
-                                "InTon": con.products[index].ton.text,
-                                "Pcs": con.products[index].piece.text
-                              };
-                              var productPriceData = await con.getProductVal(input: dataSet);
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text(productPriceData.name),
-                                    content: SizedBox(
-                                      height: 80,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          Text("Calculated Weight : " + productPriceData.calculatedWeight),
-                                          Text("Calculated Price : " + productPriceData.calculatedPrice.toString()),
-                                        ],
-                                      ),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        child: Text("CANCEL"),
-                                        onPressed: () {
-                                          Get.back();
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: Text("CONTINUE"),
-                                        onPressed: () {
-                                          con.addCart(item: productPriceData);
-                                          Get.back();
-                                        },
-                                      )
-                                    ],
-                                  );
-                                  ;
-                                },
-                              );
+                return ClipRRect(
+                  //borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Container(
+                    height: Get.height*0.1,
+                    decoration: BoxDecoration(
+                      color: colorCodes[index],
+                      //borderRadius: const BorderRadius.all(Radius.circular(4)),
+                      // border: Border(
+                      //   left: BorderSide(color: Color(0xff0EBE7F), width: 6),
+                      //   right: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
+                      //   top: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
+                      //   bottom: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
+                      // ),
+                      //border: Border.all(width: 0.4, color: const Color(0xff6D6D6D)),
+                    ),
+                    padding: EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              con.products[index].name,
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            Text(
+                              con.products[index].averageWeight,
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          con.products[index].price,
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        SizedBox(
+                            height: 40,
+                            width: 70,
+                            child: TextField(
+                                style: TextStyle(color: Colors.black),
+                                controller: con.products[index].ton,
+                                decoration: InputDecoration(
+                                    enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
+                        SizedBox(
+                            height: 40,
+                            width: 70,
+                            child: TextField(
+                                style: TextStyle(color: Colors.black),
+                                controller: con.products[index].piece,
+                                decoration: InputDecoration(
+                                    enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
+                        InkWell(
+                          onTap: () async {
+                            if (con.products[index].piece.text.isEmpty && con.products[index].ton.text.isEmpty) {
+                              AppSnackbar.showSnackbar("INFO", 'Enter some value', AlertType.info);
                             } else {
-                              AppSnackbar.showSnackbar("INFO", 'Pincode issue', AlertType.info);
+                              var checkPin = await UtilityHelper().getPincodeCheck(
+                                  pincode: AppManager.loginHelper.restoreStudentListModel().data?.pincode ?? "");
+                              if (checkPin) {
+                                var dataSet = {
+                                  "operation": "ProductPrice",
+                                  "Productid": con.products[index].productID,
+                                  "InTon": con.products[index].ton.text,
+                                  "Pcs": con.products[index].piece.text
+                                };
+                                var productPriceData = await con.getProductVal(input: dataSet);
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(productPriceData.name),
+                                      content: SizedBox(
+                                        height: 80,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text("Calculated Weight : " + productPriceData.calculatedWeight),
+                                            Text("Calculated Price : " + productPriceData.calculatedPrice.toString()),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          child: Text("CANCEL"),
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                        ),
+                                        TextButton(
+                                          child: Text("CONTINUE"),
+                                          onPressed: () {
+                                            con.addCart(item: productPriceData);
+                                            Get.back();
+                                          },
+                                        )
+                                      ],
+                                    );
+                                    ;
+                                  },
+                                );
+                              } else {
+                                AppSnackbar.showSnackbar("INFO", 'Pincode issue', AlertType.info);
+                              }
                             }
-                          }
-                        },
-                        child: Container(
-                          height: Get.height * 0.04,
-                          width: Get.width * 0.2,
-                          decoration: BoxDecoration(border: Border.all(color: Colors.white)),
-                          child: Center(
-                            child: Text(
-                              'Add',
-                              style: TextStyle(color: Colors.white),
+                          },
+                          child: Container(
+                            height: Get.height * 0.04,
+                            width: Get.width * 0.2,
+                            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                            child: Center(
+                              child: Text(
+                                'Add',
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               })),
