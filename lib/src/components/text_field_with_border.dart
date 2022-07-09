@@ -52,7 +52,7 @@ class TextFieldWithBorder extends StatelessWidget {
         validator: validator,
         enabled: enabled,
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.w500,
           fontSize: screenSize.width * .0389,

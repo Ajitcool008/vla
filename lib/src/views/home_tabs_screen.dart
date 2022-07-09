@@ -36,11 +36,11 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
           bottomNavigationBar: Container(
             decoration: const BoxDecoration(
               boxShadow: <BoxShadow>[
-                BoxShadow(color: Color(0xff997264), offset: Offset(0, -.3)),
+                BoxShadow(color: Colors.black, offset: Offset(0, -.3)),
               ],
             ),
             child: BottomNavigationBar(
-                backgroundColor: const Color(0xff2B2929),
+               // backgroundColor: const Color(0xff2B2929),
                 currentIndex: activeTabIndex,
                 onTap: (index) {
                   setState(() {
@@ -61,8 +61,8 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
-                selectedItemColor: Colors.white,
-                unselectedItemColor: Colors.white.withOpacity(.4),
+                selectedItemColor: Color(0xff0EBE7F),
+                unselectedItemColor: Colors.black.withOpacity(.4),
                 items: [
                   buildTab(
                       // name: Localization.of(context)!.date!,
@@ -105,7 +105,7 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
           height: 35,
           width: 35,
           decoration: BoxDecoration(
-            color: isActive ? const Color(0xff997264) : const Color(0xff363636),
+            color: isActive ? const Color(0xff0EBE7F) : const Color(0xff363636),
             borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
           alignment: Alignment.center,

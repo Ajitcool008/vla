@@ -100,6 +100,7 @@ class SigninSignupScreen extends StatelessWidget {
           SizedBox(height: 30),
           TextFieldWithBorder(
             hint: "Enter phone number",
+
             //icon: const SizedBox.shrink(),
             controller: con.phoneController,
             validator: con.phoneValidator,
