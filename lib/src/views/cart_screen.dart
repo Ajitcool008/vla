@@ -62,21 +62,21 @@ class CartScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(left: Get.width*0.06),
+                  padding:  EdgeInsets.only(left: Get.width*0.135),
                   child: const Text(
                     'Price',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(left: Get.width*0.12),
+                  padding:  EdgeInsets.only(left: Get.width*0.11),
                   child: const Text(
-                    'Ton',
+                    'Tonnes',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(left: Get.width*0.14),
+                  padding:  EdgeInsets.only(left: Get.width*0.05),
                   child: const Text(
                     'Piece',
                     style: TextStyle(color: Colors.white, fontSize: 18),
@@ -145,7 +145,7 @@ class CartScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.black),
                       ),
                       Text(
-                        con.productCart[index].totalWeight.toString(),
+                        con.productCart[index].totalWeightIntonnes,
                         style: TextStyle(color: Colors.black),
                       ),
                       Text(
@@ -156,17 +156,7 @@ class CartScreen extends StatelessWidget {
                         onTap: () async {
                           con.removeCart(item: con.productCart[index]);
                         },
-                        child: Container(
-                          height: Get.height * 0.04,
-                          width: Get.width * 0.2,
-                          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                          child: Center(
-                            child: Text(
-                              'Remove',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                        ),
+                        child: Icon(Icons.remove_shopping_cart_outlined),
                       ),
                     ],
                   ),

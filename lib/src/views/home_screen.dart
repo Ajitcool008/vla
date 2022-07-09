@@ -145,7 +145,70 @@ class HomeScreen extends StatelessWidget {
                               style: const TextStyle(color: Colors.black, fontSize: 18),
                             ),
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0)),
+                                      ),
+                                      builder: (BuildContext context){
+                                        return SizedBox(
+                                          height: Get.height*0.5,
+                                          child: Column(
+                                            children: [
+                                              SizedBox(height: Get.height*0.02,),
+                                              Text('Previous Market',
+                                                style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800),),
+                                              SizedBox(height: Get.height*0.02,),
+                                              SizedBox(
+                                                height: Get.height*0.4,
+                                                child: ListView.separated(
+                                                    padding: const EdgeInsets.all(8),
+                                                    separatorBuilder: (BuildContext context, int index) => SizedBox(
+                                                      height: Get.height * 0.02,
+                                                    ),
+                                                    itemCount: con.productData.length,
+                                                    itemBuilder: (BuildContext context, int index){
+                                                      return ClipRRect(
+                                                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                        child: Container(
+                                                            height: Get.height * 0.08,
+                                                            width: Get.width * 0.95,
+                                                            decoration: BoxDecoration(
+                                                              border: Border(
+                                                                left: BorderSide(color: Color(0xff0EBE7F), width: 6),
+                                                                right: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
+                                                                top: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
+                                                                bottom: BorderSide(width: .5, color: Color.fromRGBO(116, 102, 102, .5)),
+                                                              ),
+                                                            ),
+                                                          child: Row(
+                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                  con.productData[index].data[index].name.toString(),
+                                                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                                                              Text(
+                                                                 "₹${con.productData[index].data[index].price.toString()}",
+                                                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                                                              Text(
+                                                                  con.productData[index].data[index].dateTime.toString(),
+                                                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+
+                                      }
+                                  );
+                                },
                                 icon: const Icon(
                                   Icons.menu_outlined,
                                   color: Colors.black,

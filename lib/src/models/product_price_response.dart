@@ -39,6 +39,7 @@ class ProductPriceWeight {
     required this.price,
     required this.calculatedPrice,
     required this.totalWeight,
+    required this.totalWeightIntonnes,
     required this.totalPices,
     required this.length,
     required this.averageWeight,
@@ -51,6 +52,7 @@ class ProductPriceWeight {
   int calculatedPrice;
   int totalWeight;
   int totalPices;
+  String totalWeightIntonnes;
   String length;
   String averageWeight;
   String calculatedWeight;
@@ -63,6 +65,7 @@ class ProductPriceWeight {
         totalWeight: json["TotalWeight"],
         totalPices: json["TotalPices"],
         length: json["Length"],
+    totalWeightIntonnes: json["TotalWeightIntonnes"],
         averageWeight: json["AverageWeight"],
         calculatedWeight: json["CalculatedWeight"],
         category: json["Category"],
@@ -74,6 +77,7 @@ class ProductPriceWeight {
         "CalculatedPrice": calculatedPrice,
         "TotalWeight": totalWeight,
         "TotalPices": totalPices,
+        "TotalWeightIntonnes": totalWeightIntonnes,
         "Length": length,
         "AverageWeight": averageWeight,
         "CalculatedWeight": calculatedWeight,

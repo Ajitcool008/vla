@@ -13,14 +13,14 @@ class HistoryScreen extends StatelessWidget {
         appBar: _appBar(context, screenSize),
         body: SingleChildScrollView(
             child: Column(children: [
-          _historyCoupon(
-            screenSize: screenSize,
-            context: context,
-            //img: EndPoints.imageUrlBase + coupon.icon,
-            // title: coupon.businessName,
-            // youSave: coupon.discountPrice,
-            // date: coupon.date,
-          )
+          // _historyCoupon(
+          //   screenSize: screenSize,
+          //   context: context,
+          //   //img: EndPoints.imageUrlBase + coupon.icon,
+          //   // title: coupon.businessName,
+          //   // youSave: coupon.discountPrice,
+          //   // date: coupon.date,
+          // )
         ])),
       ),
     );

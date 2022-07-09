@@ -111,12 +111,12 @@ class ProductScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: Get.width * 0.12),
                   child: const Text(
-                    'Ton',
+                    'Tonnes',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: Get.width * 0.14),
+                  padding: EdgeInsets.only(left: Get.width * 0.07),
                   child: const Text(
                     'Piece',
                     style: TextStyle(color: Colors.white, fontSize: 18),
@@ -238,6 +238,7 @@ class ProductScreen extends StatelessWidget {
                             width: 70,
                             child: TextField(
                                 style: const TextStyle(color: Colors.black),
+                              keyboardType: TextInputType.number,
                                 controller: con.products[index].ton,
                                 decoration: const InputDecoration(
                                     enabledBorder: decoration, focusedBorder: decoration, border: decoration))),
@@ -245,6 +246,7 @@ class ProductScreen extends StatelessWidget {
                             height: 40,
                             width: 70,
                             child: TextField(
+                                keyboardType: TextInputType.number,
                                 style: const TextStyle(color: Colors.black),
                                 controller: con.products[index].piece,
                                 decoration: const InputDecoration(
@@ -269,14 +271,15 @@ class ProductScreen extends StatelessWidget {
                                     builder: (BuildContext context) {
                                       return CupertinoAlertDialog(
                                         title: Text(productPriceData.name),
-                                        content: Expanded(
+                                        content: Container(
                                           // height: 80,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              Text("Product Weight : ${productPriceData.calculatedWeight}"),
-                                              Text("Product Price : ${productPriceData.calculatedPrice}"),
+                                              Text("Product Weight(Tonnes) : ${productPriceData.totalWeightIntonnes}"),
+                                              Text("Product Piece : ${productPriceData.totalPices}"),
+                                              Text("Calculated Price : ${productPriceData.calculatedPrice}"),
                                             ],
                                           ),
                                         ),
