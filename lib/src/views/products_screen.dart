@@ -19,10 +19,10 @@ class ProductScreen extends StatelessWidget {
     final Size screenSize = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Colors.brown,
+      //backgroundColor: Colors.brown,
       appBar: AppBar(
         elevation: 1.0,
-        backgroundColor: Colors.brown,
+        backgroundColor: Color(0xff0EBE7F),
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Center(
