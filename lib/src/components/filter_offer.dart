@@ -17,8 +17,10 @@ class FilterOffer extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: screenSize.width * .0122),
       padding: EdgeInsets.symmetric(horizontal: screenSize.width * .024),
       height: screenSize.width * .0826,
+      width: screenSize.width * .22,
       decoration: BoxDecoration(
-        color: isActive ? const Color(0xff0EBE7F) :  Colors.white,
+        color: isActive ?  Colors.green :  Colors.white,
+        //color: isActive ? const Color(0xff0EBE7F) :  Colors.white,
         border: isActive ? null : Border.all(width: .5, color: const Color(0xff0EBE7F)),
         borderRadius: BorderRadius.all(Radius.circular(screenSize.width * .06)),
         //borderRadius: BorderRadius.all(Radius.circular(screenSize.width * .0097)),

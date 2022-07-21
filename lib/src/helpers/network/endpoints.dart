@@ -6,6 +6,7 @@ class Endpoints {
   static const String registers3 = "/register-s3.php";
   static const String market = "market.php";
   static const String marketCheck = "market-check.php";
+  static const String marketprice = "market_price.php";
   static const String pincodeCheck = "pincode-check.php";
   static const String category = "category.php";
   static const String products = "products_category.php";

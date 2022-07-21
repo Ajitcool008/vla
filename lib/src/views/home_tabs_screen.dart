@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vla/src/views/profile_screen.dart';
 import 'package:vla/src/views/products_screen.dart';
 
+import '../components/drawer_widget.dart';
+import '../controllers/home_controller.dart';
+import '../controllers/product_controller.dart';
+import 'cart_screen.dart';
 import 'history_screen.dart';
 import 'home_screen.dart';
 
@@ -26,6 +31,8 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var con = Get.put(HomeController());
+    var procon = Get.put(ProductController());
     return Stack(
       children: [
         Scaffold(
@@ -33,14 +40,15 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
             index: activeTabIndex,
             children: tabScreens,
           ),
-          bottomNavigationBar: Container(
-            decoration: const BoxDecoration(
-              boxShadow: <BoxShadow>[
-                BoxShadow(color: Colors.black, offset: Offset(0, -.3)),
-              ],
-            ),
+          bottomNavigationBar: SizedBox(
+            height: Get.height*0.0815,
             child: BottomNavigationBar(
-               // backgroundColor: const Color(0xff2B2929),
+              unselectedFontSize: 0.0,
+              selectedFontSize: 0.0,
+              iconSize: 0.0,
+                backgroundColor: Colors.transparent,
+              showSelectedLabels: false,
+                showUnselectedLabels: false,
                 currentIndex: activeTabIndex,
                 onTap: (index) {
                   setState(() {
@@ -51,36 +59,26 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
                 // ontapBottomNav(
                 // tabIndex: index, context: context),
                 type: BottomNavigationBarType.fixed,
-                unselectedLabelStyle: const TextStyle(
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                ),
-                selectedLabelStyle: const TextStyle(
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                ),
+                // unselectedLabelStyle: const TextStyle(
+                //   fontFamily: "Montserrat",
+                //   fontWeight: FontWeight.w400,
+                //   fontSize: 12,
+                // ),
+                // selectedLabelStyle: const TextStyle(
+                //   fontFamily: "Montserrat",
+                //   fontWeight: FontWeight.w400,
+                //   fontSize: 12,
+                // ),
                 selectedItemColor: Color(0xff0EBE7F),
                 unselectedItemColor: Colors.black.withOpacity(.4),
                 items: [
                   buildTab(
                       // name: Localization.of(context)!.date!,
-                      name: "Home",
-                      iconAddress: 'assets/images/home@3x.png',
+                      name: "Market",
                       isActive: activeTabIndex == 0 ? true : false),
                   buildTab(
                       name: "Product",
-                      iconAddress: 'assets/images/nearMe@3x.png',
                       isActive: activeTabIndex == 1 ? true : false),
-                  buildTab(
-                      name: "History",
-                      iconAddress: 'assets/images/fav@3x.png',
-                      isActive: activeTabIndex == 2 ? true : false),
-                  buildTab(
-                      name: "Profile",
-                      iconAddress: 'assets/images/bell@3x.png',
-                      isActive: activeTabIndex == 3 ? true : false),
                 ]),
           ),
         ),
@@ -97,24 +95,19 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
   }
 
   BottomNavigationBarItem buildTab(
-      {required String name, required String iconAddress, required bool isActive}) {
+      {required String name, required bool isActive}) {
     return BottomNavigationBarItem(
-      icon: Padding(
-        padding: const EdgeInsets.only(bottom: 5, top: 5),
-        child: Container(
-          height: 35,
-          width: 35,
-          decoration: BoxDecoration(
-            color: isActive ? const Color(0xff0EBE7F) : const Color(0xff363636),
-            borderRadius: const BorderRadius.all(Radius.circular(8)),
-          ),
-          alignment: Alignment.center,
-          child: Image.asset(
-            iconAddress,
-            color: isActive ? Colors.white : const Color(0xffE6E6E8),
-            height: 19,
-          ),
+      icon: Container(
+        width: Get.width * 0.5,
+        height: Get.height*0.08,
+        decoration: BoxDecoration(
+            color: isActive ?  Color(0xff006400) :  Colors.white,
+          //borderRadius: const BorderRadius.all(Radius.circular(5)),
         ),
+        alignment: Alignment.center,
+        child: Text(name,
+            style: isActive ? TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 23):
+           TextStyle(color: Colors.grey, fontWeight: FontWeight.w800, fontSize: 23)),
       ),
       label: name,
     );

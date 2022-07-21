@@ -5,6 +5,7 @@ import 'package:vla/src/controllers/product_controller.dart';
 import 'package:vla/src/helpers/app_manager.dart';
 import 'package:vla/src/helpers/utility_helper.dart';
 
+import '../components/drawer_widget.dart';
 import '../components/filter_offer.dart';
 import '../helpers/app_snackbar.dart';
 import 'cart_screen.dart';
@@ -22,13 +23,37 @@ class ProductScreen extends StatelessWidget {
         child: Scaffold(
       //backgroundColor: Colors.brown,
       appBar: AppBar(
+        toolbarHeight: Get.height*0.08,
+        backgroundColor: Colors.green,
+        //Color(0xff1ECB8D),
         elevation: 1.0,
-        backgroundColor: const Color(0xff0EBE7F),
-        automaticallyImplyLeading: false,
+        leading: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Container(
+            height: Get.height*0.04,
+            width: Get.width*0.14,
+            decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(90),
+                border: Border.all(color: Colors.grey.shade400)
+            ),
+            child: IconButton(
+              onPressed: () => con.scaffoldEy.currentState!.openDrawer(),
+              icon: const Icon(Icons.menu),
+              color: Colors.black,
+            ),
+          ),
+        ),
         centerTitle: true,
-        title: const Text(
-          'Product',
-          style: TextStyle(fontSize: 23),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // CircleAvatar(
+            //   backgroundImage: AssetImage('assets/images/launcher_icon.png')
+            // ),
+            Text('Product',
+              style: TextStyle(color: Colors.black, fontSize: 23),)
+          ],
         ),
         actions: <Widget>[
           Padding(
@@ -38,102 +63,162 @@ class ProductScreen extends StatelessWidget {
                 Get.to(() => const CartScreen());
               },
               child: Obx(() => Stack(
-                    children: <Widget>[
-                      const IconButton(
-                        icon: Icon(
-                          Icons.shopping_cart,
-                          color: Colors.white,
-                        ),
-                        onPressed: null,
+                children: <Widget>[
+                  Container(
+                    height: Get.height*0.07,
+                    width: Get.width*0.11,
+                    decoration: BoxDecoration(
+                      color: Colors.green.shade50,
+                      borderRadius: BorderRadius.circular(90),
+                      //border: Border.all(color: Colors.grey.shade400)
+                    ),
+                    child: const IconButton(
+                      icon: Icon(
+                        Icons.shopping_cart,
+                        color: Colors.black,
                       ),
-                      con.productCart.length == 0
-                          ? const SizedBox.shrink()
-                          : Positioned(
-                              top: 0,
-                              right: 4,
-                              child: Stack(
-                                children: <Widget>[
-                                  Container(
-                                    height: 20.0,
-                                    width: 20.0,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        con.productCart.length.toString(),
-                                        style: TextStyle(
-                                          color: Color(0xff0EBE7F),
-                                          fontSize: 11.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                      onPressed: null,
+                    ),
+                  ),
+                  con.productCart.length == 0
+                      ? Positioned(
+                    top: 0,
+                    right: 4,
+                    child: Stack(
+                      children: <Widget>[
+                        Container(
+                          height: 20.0,
+                          width: 20.0,
+                          decoration: const BoxDecoration(
+                            color: Colors.green,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Text(
+                              '0',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11.0,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                    ],
-                  )),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                      : Positioned(
+                    top: 0,
+                    right: 4,
+                    child: Stack(
+                      children: <Widget>[
+                        Container(
+                          height: 20.0,
+                          width: 20.0,
+                          decoration: const BoxDecoration(
+                            color: Colors.green,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Text(
+                              con.productCart.length.toString(),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )),
             ),
           )
         ],
       ),
-      body: Column(
+          key: con.scaffoldEy,
+          drawer: DrawerElement(),
+      body: Stack(
         children: [
-          SizedBox(height: screenSize.width * .03),
-          SizedBox(height: 40, child: filterOffers(con)),
-          SizedBox(height: screenSize.width * .03),
-          Container(
-            height: Get.height * 0.06,
-            // width: Get.width * 0.999,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(14, 190, 127, 89),
-              border: Border.all(color: Colors.white, width: 2),
-              //borderRadius: BorderRadius.circular(15)
-            ),
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Name',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+          // SizedBox(
+          //     height: Get.height*0.9,
+          //     width: Get.width*0.9999,
+          //     child: Image.asset('assets/images/backgoundimage.png',fit: BoxFit.fill,)),
+          // Positioned(
+          //   top: Get.height*0.23,
+          //   left: Get.width*0.37,
+          //   child: SizedBox(
+          //       height: Get.height*0.7,
+          //       width: Get.width*0.99,
+          //       child: Image.asset('assets/images/shoppingcart-removebg-preview.png',
+          //         fit: BoxFit.fill,)),
+          // ),
+          Column(
+            children: [
+              SizedBox(height: screenSize.width * .03),
+              SizedBox(height: 40, child: filterOffers(con)),
+              SizedBox(height: screenSize.width * .03),
+              Container(
+                height: Get.height * 0.06,
+                // width: Get.width * 0.999,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color:  Colors.green,
+                  //color: const Color.fromRGBO(14, 190, 127, 89),
+                  border: Border.all(color: Colors.white, width: 2),
+                  //borderRadius: BorderRadius.circular(15)
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: Get.width * 0.06),
-                  child: const Text(
-                    'Price',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: Get.width*0.13,
+                      child: const Text(
+                        'Name',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ),
+                    SizedBox(
+                      width: Get.width*0.14,
+                      child: const Text(
+                        'Price',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ),
+                    SizedBox(
+                      width: Get.width*0.13,
+                      child: const Text(
+                        'Tonnes',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ),
+                    SizedBox(
+                      width: Get.width*0.12,
+                      child: const Text(
+                        'Piece',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ),
+                    SizedBox(
+                      width: Get.width*0.075,
+                      child: const Text(
+                        '',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: Get.width * 0.12),
-                  child: const Text(
-                    'Tonnes',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: Get.width * 0.07),
-                  child: const Text(
-                    'Piece',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
-                const Text(
-                  '',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ],
-            ),
+              ),
+              _productCoupon(
+                con,
+                screenSize: screenSize,
+                context: context,
+              )
+            ],
           ),
-          _productCoupon(
-            con,
-            screenSize: screenSize,
-            context: context,
-          )
         ],
       ),
     ));
@@ -218,20 +303,9 @@ class ProductScreen extends StatelessWidget {
                         //     // ),
                         //   ],
                         // ),
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: Get.height * 0.012,
-                            ),
-                            const Text(
-                              'Starts From',
-                              style: TextStyle(color: Color(0xff0EBE7F), fontSize: 10, fontWeight: FontWeight.w800),
-                            ),
-                            Text(
-                              con.products[index].price,
-                              style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 15),
-                            ),
-                          ],
+                        Text(
+                          con.products[index].price,
+                          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 15),
                         ),
                         SizedBox(
                             height: 40,
@@ -307,7 +381,7 @@ class ProductScreen extends StatelessWidget {
                                 }
                               }
                             },
-                            child: const Icon(Icons.add_shopping_cart_outlined)),
+                            child: const Icon(Icons.add)),
                       ],
                     ),
                   ),

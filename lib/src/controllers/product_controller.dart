@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../helpers/network/endpoints.dart';
@@ -7,6 +8,7 @@ import '../models/category_response_model.dart';
 import '../models/product_price_response.dart';
 
 class ProductController extends GetxController {
+  final GlobalKey<ScaffoldState> scaffoldEy = GlobalKey<ScaffoldState>();
   RxList<CategoryData> categoryData = <CategoryData>[].obs;
   RxList<CategoryProductData> products = <CategoryProductData>[].obs;
   RxList<ProductPriceWeight> productCart = <ProductPriceWeight>[].obs;

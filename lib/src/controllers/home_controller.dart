@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../helpers/network/endpoints.dart';
@@ -5,6 +6,7 @@ import '../helpers/network/network_manager.dart';
 import '../models/market_response_model.dart';
 
 class HomeController extends GetxController {
+  final GlobalKey<ScaffoldState> scaffoldEy = GlobalKey<ScaffoldState>();
   RxList<ProductsData> productData = <ProductsData>[].obs;
   @override
   void onInit() {

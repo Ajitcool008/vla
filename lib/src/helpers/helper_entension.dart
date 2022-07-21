@@ -19,15 +19,27 @@ class RadiantGradientMask extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShaderMask(
       shaderCallback: (Rect bounds) {
-        return RadialGradient(
-          center: Alignment.bottomLeft,
-          radius: 0.5,
-          colors: <Color>[
-            Colors.purple,
-            Colors.blue,
+        return LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.grey.shade400,
+              Colors.blue.shade600,],
+          stops: [
+            0.3,
+            0.7,
           ],
           tileMode: TileMode.mirror,
-        ).createShader(bounds);
+        )
+        //   RadialGradient(
+        //   center: Alignment.bottomRight,
+        //   radius: 0.5,
+        //   colors: <Color>[
+        //     Colors.grey,
+        //     Colors.blue,
+        //   ],
+        //   tileMode: TileMode.mirror,
+        // )
+              .createShader(bounds);
       },
       child: child,
     );
